@@ -38,6 +38,22 @@ substituted with an equivalent from the same class.
 | ArchUnit | Architecture boundary (JVM) | Layering, cycles and dependency direction as tests |
 | madge | Cycle detection (JS/TS) | Circular dependency report |
 
+## Code complexity & performance gates
+
+| Tool | Class | What it checks |
+|---|---|---|
+| Radon | Cyclomatic complexity, maintainability index (Python) | Per-function rank, blocks, average complexity |
+| Ruff C901 / mccabe | Cyclomatic complexity (Python) | Functions above a configured `max-complexity` |
+| ESLint complexity rules | Complexity, depth, size (JS/TS) | `complexity`, `max-depth`, `max-lines-per-function`, `max-statements` |
+| gocyclo / golangci-lint cyclop | Cyclomatic complexity (Go) | Functions over threshold, package averages |
+| PMD / Checkstyle CyclomaticComplexity | Complexity (JVM) | Method and class complexity, NPath, nesting depth |
+| SonarQube cognitive complexity | Cognitive complexity (multi-language) | Nesting-weighted complexity, duplication, function size |
+| pytest-benchmark | Micro-benchmark runner (Python) | Timing distributions with saved JSON baseline |
+| criterion | Benchmark runner (Rust) | Statistical comparison against previous run |
+| benchstat | Benchmark comparison (Go) | Significance-tested deltas between `go test -bench` runs |
+| k6 | Load and threshold testing | p95/p99 and error-rate thresholds as pass/fail gates |
+| github-action-benchmark | Benchmark regression gate (CI) | Fails PRs whose benchmark delta exceeds a set threshold |
+
 ## Secret scanning
 
 | Tool | Class | What it checks |

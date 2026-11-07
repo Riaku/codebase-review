@@ -10,8 +10,8 @@ This category covers the classes of bug that have nothing to do with an attacker
 - Bounds and indexing: off-by-one errors in loops, slices, pagination, and buffer sizes, and guards that exclude one sentinel instead of the whole invalid range.
 - Text and encoding: character encoding, code-point versus byte length, and truncation assumptions.
 - Time and scheduling: time-zone handling and daylight-saving transitions.
-- Concurrency and async: shared mutable state, blocking a shared event loop, unhandled async errors, and check-then-use races when publishing temporary files.
-- Complexity, boundaries and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, import cycles and reads of another module's internals, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
+- Concurrency, async and resource lifetime: shared mutable state, blocking a shared event loop, unhandled async errors, check-then-use races when publishing temporary files, cancellation that never reaches in-flight work, and handles, locks, timers and subscriptions released on every exit path.
+- Complexity, boundaries and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, import cycles and reads of another module's internals, function length and nesting budgets enforced against a measured baseline, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
 
 ## What it does not cover
 
@@ -25,5 +25,5 @@ This category covers the classes of bug that have nothing to do with an attacker
 - Currency accumulated in binary floating point, so totals drift and repeated runs disagree.
 - A loop bound or slice range off by one, dropping or duplicating records.
 - A scheduled job that fires twice or not at all across a daylight-saving transition.
-- Shared mutable state mutated from multiple threads without a lock, or a CPU-bound call inside a shared event loop stalling every concurrent request.
-- Two modules importing each other, so neither can be built, tested or replaced alone.
+- Shared mutable state mutated from multiple threads without a lock, a CPU-bound call inside a shared event loop stalling every concurrent request, or a timer that keeps firing after the request that created it returned.
+- Two modules importing each other, so neither can be built, tested or replaced alone, or a function with a dozen branches and four levels of nesting where no test reaches every path.
