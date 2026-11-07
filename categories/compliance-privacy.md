@@ -11,7 +11,7 @@ The class of problems here is privacy and data-protection obligations as they mu
 - Classification, lineage, and residency — tagging PII at creation, tracking its flow through warehouse layers, and keeping it inside mandated geographic boundaries.
 - Disclosure and inventory — the privacy notice the app itself serves, kept matched to the fields and recipients the code actually has, and the field-to-store map that erasure, access requests, and breach notification all read.
 - Redaction and leakage control — logs, notebook outputs, API serialization, serverless container reuse, and payloads sent to third-party LLM APIs.
-- Audit evidence and access governance — audit trails, object-level access logging, privileged-action attribution, JIT and break-glass access, and offboarding and role-change revocation.
+- Audit evidence and access governance — audit trails, object-level access logging, privileged-action attribution, JIT and break-glass access, offboarding and role-change revocation, and staff reads of customer records bounded by a reason and an expiring grant.
 - Audit regimes and third-party accountability — SOC 2 evidence collection, PCI DSS card-data prohibitions, NYDFS cyber requirements, vendor and subprocessor registers, and third-party license tracking.
 - Consent-scoped client capture and disclosure — session replay and input recording gated on consent with capture-time field masking, and visitor IP or user-agent disclosure to third-party font and CDN hosts.
 
