@@ -24,6 +24,20 @@ substituted with an equivalent from the same class.
 | Megalinter | Meta-linter | Orchestrates many linters/scanners in one CI job |
 | pre-commit | Meta-hook runner | Runs linters/scanners pre-commit |
 
+## Dead code & architecture boundaries
+
+| Tool | Class | What it checks |
+|---|---|---|
+| Vulture | Dead code (Python) | Unused functions, variables, imports, attributes |
+| Knip | Dead code (JS/TS) | Unused files, exports, types, dependencies |
+| deadcode | Dead code (Go) | Unreachable functions from the call graph |
+| Staticcheck U1000 | Dead code (Go) | Unused unexported identifiers |
+| deptry | Unused dependencies (Python) | Declared-but-unused and used-but-undeclared deps |
+| import-linter | Architecture boundary (Python) | Import cycles, layer and independence contracts |
+| dependency-cruiser | Architecture boundary (JS/TS) | Forbidden and circular dependencies, layer rules |
+| ArchUnit | Architecture boundary (JVM) | Layering, cycles and dependency direction as tests |
+| madge | Cycle detection (JS/TS) | Circular dependency report |
+
 ## Secret scanning
 
 | Tool | Class | What it checks |

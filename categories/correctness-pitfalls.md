@@ -4,13 +4,14 @@ Language-agnostic code-level failure modes.
 
 ## What this category covers
 
-This category covers the classes of bug that have nothing to do with an attacker and everything to do with the code being wrong: arithmetic and representation, bounds and ordering, concurrency, and the error handling that decides whether a fault stays local. The items span numeric correctness (floating-point comparison and accumulation, currency as integers, integer overflow and range checks), text handling (character encoding, code-point versus byte length, and truncation assumptions, off-by-one bounds), and time (time zones, daylight-saving transitions). They also cover concurrency and async behavior (thread safety, blocking a shared event loop, unhandled async errors, trigger throttling), algorithmic and resource cost on unbounded input (repeated computation on invariant inputs, unbounded directory traversal, unsafe temporary-file publication), edge cases and schema validation, structured exception handling, and code-hygiene traps such as merge conflicts, config-example drift, business-logic bypass, dead code, and tracked technical debt. Expect findings that describe wrong behavior with an input a user or caller can actually supply, not a style preference.
+This category covers the classes of bug that have nothing to do with an attacker and everything to do with the code being wrong: arithmetic and representation, bounds and ordering, concurrency, and the error handling that decides whether a fault stays local. The items span numeric correctness (floating-point comparison and accumulation, currency as integers, integer overflow and range checks), text handling (character encoding, code-point versus byte length, and truncation assumptions, off-by-one bounds), and time (time zones, daylight-saving transitions). They also cover concurrency and async behavior (thread safety, blocking a shared event loop, unhandled async errors, trigger throttling), algorithmic and resource cost on unbounded input (repeated computation on invariant inputs, unbounded directory traversal, unsafe temporary-file publication), edge cases and schema validation, structured exception handling, and code-hygiene traps such as merge conflicts, config-example drift, business-logic bypass, dead code, module boundary integrity, and tracked technical debt. Expect findings that describe wrong behavior with an input a user or caller can actually supply, not a style preference.
 
 - Numeric correctness: floating-point comparison and accumulation, currency as integers, and integer overflow.
 - Bounds and indexing: off-by-one errors in loops, slices, pagination, and buffer sizes, and guards that exclude one sentinel instead of the whole invalid range.
 - Text and encoding: character encoding, code-point versus byte length, and truncation assumptions.
 - Time and scheduling: time-zone handling and daylight-saving transitions.
 - Concurrency and async: shared mutable state, blocking a shared event loop, unhandled async errors, and check-then-use races when publishing temporary files.
+- Module boundaries: import cycles, and reads of another module's internals past its public interface.
 - Complexity and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
 
 ## What it does not cover
@@ -27,3 +28,4 @@ This category covers the classes of bug that have nothing to do with an attacker
 - A scheduled job that fires twice or not at all across a daylight-saving transition.
 - Shared mutable state mutated from multiple threads without a lock or atomic.
 - A CPU-bound call inside a shared event loop, stalling every concurrent request.
+- Two modules importing each other, so neither can be built, tested or replaced alone.
