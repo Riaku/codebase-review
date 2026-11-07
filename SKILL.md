@@ -1,18 +1,19 @@
 ---
-name: security-review-skill
+name: codebase-review
 description: >-
-  Systematic security, deployment, and reliability review of a codebase using a
-  checklist of items grouped into categories and domains, fanned out to parallel
-  sub-agents. Use when asked to review a project for security issues, production
-  readiness, deployment concerns, compliance posture, or a security audit.
+  Systematic review of a codebase for security, correctness, performance, cost
+  and operational readiness using a checklist of items grouped into categories
+  and domains, fanned out to parallel sub-agents. Use when asked to review a
+  project for security issues, production readiness, deployment concerns,
+  performance or spend, compliance posture, or a security audit.
 license: MIT
 metadata:
-  author: security-review-skill contributors
+  author: codebase-review contributors
   spec: https://agentskills.io/specification
   attribution: "Full source list in SOURCES.md. Seed: 250-item list by @ghumare64 (https://x.com/ghumare64/status/2111332908657148356); system-design content from Arjay McCandless's Cheat Sheet and Ultimate System Design Playbook; expanded from OWASP/NIST/MITRE/SLSA and vendor platform guides."
 ---
 
-# Security Review Skill
+# Codebase Review
 
 Reviews a codebase and its deployment against the full item checklist. Each item
 is a small reference file with a normative statement written in BCP 14 keywords

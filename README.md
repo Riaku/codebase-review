@@ -1,14 +1,18 @@
-# security-review-skill
+# codebase-review
 
-An agent skill that performs a systematic security, deployment and reliability
-review of a codebase, fanned out to parallel sub-agents. The checklist is
+An agent skill that performs a systematic review of a codebase — security
+first, then correctness, performance, spend and operational readiness — fanned
+out to parallel sub-agents. The checklist is
 organised into categories and domains; each item is a small reference file
 carrying a normative statement in BCP 14 keywords
 (**MUST / MUST NOT / SHOULD / SHOULD NOT / MAY**), a *Why*, a *Detect* line and
 a *References* line.
 
 Use it when asked to review a project for security issues, production
-readiness, deployment concerns, compliance posture, or a security audit.
+readiness, deployment concerns, performance or cloud spend, compliance posture,
+or a security audit. The checklist deliberately runs wider than security: about
+four items in ten carry no security category at all, because a review that stops
+at security still ships a service nobody can afford to run or read.
 
 ## Install
 
@@ -16,10 +20,10 @@ A skill is a directory with a `SKILL.md` at its root, so installing is a clone o
 a copy into whatever directory your harness reads skills from:
 
 ```bash
-npx skills add Riaku/security-review-skill      # or your harness's own installer
+npx skills add Riaku/codebase-review      # or your harness's own installer
 
-git clone https://github.com/Riaku/security-review-skill.git \
-  "$SKILLS_DIR/security-review-skill"
+git clone https://github.com/Riaku/codebase-review.git \
+  "$SKILLS_DIR/codebase-review"
 ```
 
 There is nothing to build and no service to run: the checklist is plain
@@ -29,8 +33,9 @@ pointed at `SKILL.md`.
 **Installing from an archive.** The installer also accepts a direct download URL
 to a `.zip`, `.tar`, `.tar.gz`, `.tgz` or a bare `SKILL.md` — the path for a
 release asset, a mirror, or an offline machine. Its extractor refuses archives
-with more than 1,000 files by default, and this skill is 1,071 (1,005 items plus
-the manifests, references and scripts), so that path needs the limit raised:
+with more than 1,000 files by default, and this skill is 1,089 (1,023 items plus
+the manifests, references, scripts and templates), so that path needs the limit
+raised:
 
 ```bash
 SKILLS_EXTRACT_MAX_FILES=2000 npx skills add <archive-url>
@@ -44,7 +49,7 @@ override.
 Ask your agent to use it, naming the target and the scope you care about:
 
 ```
-Review ~/src/my-service with the security-review-skill checklist.
+Review ~/src/my-service with the codebase-review checklist.
 Focus on the backend and data domains; report MUST violations first.
 ```
 

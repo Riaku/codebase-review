@@ -26,7 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ISSUES = ROOT / "issues"
-UA = "security-review-skill-linkcheck/1.0 (+https://github.com/Riaku/security-review-skill)"
+UA = "codebase-review-linkcheck/1.0 (+https://github.com/Riaku/codebase-review)"
 TIMEOUT = 25
 WORKERS = 6
 OK_CODES = set(range(200, 300)) - {202}
