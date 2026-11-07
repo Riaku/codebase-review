@@ -11,8 +11,7 @@ This category covers the classes of bug that have nothing to do with an attacker
 - Text and encoding: character encoding, code-point versus byte length, and truncation assumptions.
 - Time and scheduling: time-zone handling and daylight-saving transitions.
 - Concurrency and async: shared mutable state, blocking a shared event loop, unhandled async errors, and check-then-use races when publishing temporary files.
-- Module boundaries: import cycles, and reads of another module's internals past its public interface.
-- Complexity and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
+- Complexity, boundaries and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, import cycles and reads of another module's internals, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
 
 ## What it does not cover
 
@@ -26,6 +25,5 @@ This category covers the classes of bug that have nothing to do with an attacker
 - Currency accumulated in binary floating point, so totals drift and repeated runs disagree.
 - A loop bound or slice range off by one, dropping or duplicating records.
 - A scheduled job that fires twice or not at all across a daylight-saving transition.
-- Shared mutable state mutated from multiple threads without a lock or atomic.
-- A CPU-bound call inside a shared event loop, stalling every concurrent request.
+- Shared mutable state mutated from multiple threads without a lock, or a CPU-bound call inside a shared event loop stalling every concurrent request.
 - Two modules importing each other, so neither can be built, tested or replaced alone.
