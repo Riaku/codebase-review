@@ -6,11 +6,11 @@ Who may do what: RBAC, RLS, least privilege.
 
 This category covers the policy layer that decides what an already-identified principal may do: the role model, the grant, the scope, and the review that keeps them honest. The items span application role-based access control and least privilege, database row-level security for tenant-scoped data, cloud IAM (wildcard actions, PassRole chains, cross-account roles without a caller-specific ExternalId), and Kubernetes role bindings (impersonate, bind, and escalate verbs; exec and attach treated as root-in-pod). They also cover manifest-repo privilege mapping, where write access to a manifest repo becomes cluster write access, and the human processes that grant and revoke access: joiners, movers, and leavers, least-used-permission review, just-in-time and break-glass privileged access, and segregation of duties. Expect findings about a grant broader than the workload needs, a path that lets a principal widen its own access, or access that outlives the reason it was granted.
 
-- Application role-based access control: roles bound to users, function-level checks, and vertical privilege escalation.
+- Application role-based access control: job-function roles with minimal permission sets, function-level checks, vertical privilege escalation, and conflicting duty pairs kept on separate principals.
 - Least privilege and entitlement review: observed-use verification, unused-permission pruning, and non-human identity scoping.
 - Cloud IAM: wildcard policies, privilege-escalation edges, and cross-account confused-deputy trust.
 - Kubernetes and manifest-repo authorization: role escalation verbs, exec and attach, controller scope, and repo-to-cluster privilege mapping.
-- Human access lifecycle: revocation on termination or transfer, just-in-time and break-glass access, and segregation of duties.
+- Human access lifecycle: revocation on termination or transfer, just-in-time and break-glass access, segregation of duties, administrative identities kept separate from daily-use accounts, and bounded staff reads of customer records.
 - Data-layer enforcement: row-level security and tenant scoping in the database rather than only in application queries.
 - Delegated-agent scoping: credentials and tool allowlists narrowed to the sub-task when one agent delegates to another.
 
@@ -23,7 +23,7 @@ This category covers the policy layer that decides what an already-identified pr
 
 ## What a finding here looks like
 
-- A role granted wildcard actions or resources, so one leaked credential reaches everything the account can touch.
+- A role granted wildcard actions or resources, so one leaked credential reaches everything the account can touch, or one role holding both halves of a workflow so it can request and approve its own action.
 - A cross-account role whose trust policy accepts any caller because it has no ExternalId or source condition.
 - A Kubernetes subject holding bind or impersonate, letting it attach admin to itself.
 - An entitlement still active long after the employee transferred or left.
