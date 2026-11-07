@@ -1,6 +1,6 @@
-# Security & Deployment Review — {repo_name}
+# Security, Quality and Deployment Review — {repo_name}
 
-**Date:** {date} · **Skill:** security-review-skill
+**Date:** {date} · **Skill:** codebase-review
 **Domains reviewed:** {domains}
 **Categories dispatched:** {categories} · **Items covered:** {item_count}
 **Depth profile:** {quick | standard | deep}

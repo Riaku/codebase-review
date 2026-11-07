@@ -1,8 +1,8 @@
-# AGENTS.md — security-review-skill
+# AGENTS.md — codebase-review
 
 Rules for agents and humans who change this repository.
 
-This repository is a security-review checklist that an agent loads as a skill.
+This repository is a codebase-review checklist that an agent loads as a skill: security first, then correctness, performance, cost and operational readiness.
 `SKILL.md` is the entry point. Requirements below use the BCP 14 keywords MUST,
 MUST NOT, SHOULD, SHOULD NOT and MAY, defined in RFC 2119 and RFC 8174.
 
