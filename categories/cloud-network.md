@@ -4,14 +4,14 @@ Cloud networking, DNS, edge, cloud resource exposure.
 
 ## What this category covers
 
-This category covers the network and cloud-control-plane surface between the internet and a workload: what is reachable, from where, and under whose identity. Member items span DNS and certificate lifecycle, edge and ingress routing, firewalls and security groups, VPC and subnet segmentation, cloud IAM and metadata credentials, and the exposure of storage and data stores. They also cover the operational side of that surface — cost alarms, posture scanning, attack-path analysis, and the detection signals that reveal lateral movement or exfiltration. A reviewer should expect findings about who can reach a service, whether that reach was deliberate, and whether the identity behind a connection is actually verified.
+This category covers the network and cloud-control-plane surface between the internet and a workload: what is reachable, from where, and under whose identity. Member items span DNS and certificate lifecycle, edge and ingress routing, firewalls and security groups, VPC and subnet segmentation, cloud IAM and metadata credentials, and the exposure of storage and data stores. They also cover the operational side of that surface — cost alarms, spend attribution, posture scanning, attack-path analysis, and the detection signals that reveal lateral movement or exfiltration. A reviewer should expect findings about who can reach a service, whether that reach was deliberate, and whether the identity behind a connection is actually verified.
 
 - DNS records, CAA, DNSSEC, propagation TTLs, and dangling or hijackable names.
 - TLS termination: certificate renewal, cipher suites, client verification, and post-quantum readiness.
 - Edge routing: API gateway authorizers and mapping templates, ingress host matching, and load balancers.
 - Network segmentation: VPCs, subnets, security groups, NAT, IPv6 coverage, and service-to-service mTLS.
 - Cloud identity: IAM policy breadth, privilege-escalation edges, cross-account trust, and instance metadata.
-- Exposure and cost: public buckets, open data-store ports, presigned URLs, egress baselines, and billing alarms.
+- Exposure and cost: public buckets, open data-store ports, presigned URLs, egress baselines, billing alarms, and tags that attribute spend to an owner.
 
 ## What it does not cover
 

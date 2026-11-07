@@ -10,7 +10,7 @@ This category covers the configuration of containers and of the cluster that run
 - Isolation boundaries: hostPath, host namespaces, runtime sockets, and privileged mode.
 - Identity and authorization: service accounts, RBAC verbs, admission policy, and API audit logging.
 - Control-plane and node exposure: etcd, the kubelet port, and the scope of the GitOps controller.
-- Scheduling and lifecycle: probes, disruption budgets, quotas, eviction order, owner references, and finalizers.
+- Scheduling and lifecycle: probes, disruption budgets, quotas, eviction order, owner references, finalizers, and requests sized against observed use.
 - Image hygiene: multi-stage builds, digest pinning, and registry-outage tolerance.
 
 ## What it does not cover
@@ -25,4 +25,4 @@ This category covers the configuration of containers and of the cluster that run
 - A workload runs as UID 0 with default capabilities and no seccomp profile.
 - An RBAC role grants `impersonate`, `bind`, or `escalate`, or broad `pods/exec`, to a non-admin subject.
 - A liveness probe checks the database, so a downstream outage restarts every replica at once.
-- No admission policy engine or ResourceQuota exists, so any manifest that passes review can deploy unbounded or privileged.
+- No admission policy engine or ResourceQuota exists, so any manifest that passes review can deploy unbounded or privileged, or a workload reserves four CPUs to run at two percent utilisation.
