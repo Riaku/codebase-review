@@ -6,8 +6,7 @@ Search visibility, crawl/index hygiene, and page experience (Google Search Centr
 
 This category covers whether a site can be discovered, crawled, and indexed correctly, and whether its pages meet the rendering and performance expectations search engines measure. Its member items span crawl directives and sitemaps, canonical and redirect handling, index-bloat control, hreflang and structured data, meta/OG tag completeness, Core Web Vitals and Lighthouse budgets, image serving, crawler-renderable content, AI-crawler consent and agent guidance files, and Google Search Central policy compliance. A reviewer here should check the site as both a crawler and a real user see it, and confirm that indexability, canonicalization, and page-experience budgets are deliberate rather than accidental. Findings are usually a page that should not be indexed but is, or one that is indexable but crawls badly: a canonical pointing elsewhere, a redirect chain, or a client-rendered page Googlebot cannot see.
 
-- Crawl and index governance: robots.txt, noindex/X-Robots-Tag, sitemaps, faceted-URL control.
-- AI-crawler and agent guidance: per-agent allow/deny in robots.txt, llms.txt as a curated index.
+- Crawl and index governance: robots.txt including per-agent AI-crawler consent, noindex/X-Robots-Tag, sitemaps, llms.txt, faceted-URL control.
 - Canonicalization and redirect/status hygiene.
 - Rendering for crawlers: SSR/prerender equivalence with the user-facing DOM.
 - Page experience: Core Web Vitals budgets and Lighthouse CI assertions.
@@ -21,9 +20,8 @@ This category covers whether a site can be discovered, crawled, and indexed corr
 
 ## What a finding here looks like
 
-- a staging site reachable without `noindex`, so staging pages rank in production results.
+- a public site whose robots.txt names only `*` while the team believes AI training crawlers are excluded, or a staging site reachable without `noindex` so staging pages rank in production results.
 - an indexable URL that 301s through a second hop before resolving.
 - a client-rendered page whose HTML arrives empty, so Googlebot indexes a blank shell.
 - LCP at the 75th percentile well above the 2.5s budget with no gate to catch it.
-- a public content site whose robots.txt names only `*` while the team believes it has excluded AI training crawlers.
 - a faceted filter combination generating thousands of indexable near-duplicate URLs.
