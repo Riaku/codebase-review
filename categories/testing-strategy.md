@@ -11,7 +11,7 @@ This category covers how a codebase proves its behavior before and after merge: 
 - Test quality: flaky-test discipline, determinism and isolation, stubbing only external dependencies, and assertions not derived from the implementation.
 - Coverage honesty: what a target measures, which modules are excluded, and whether the exclusions are the security-critical ones.
 - Behavior-guarding techniques: test-first fixes, regression tests per bug, property-based testing, fuzz testing, and contract testing.
-- CI gates: linting and static analysis, architecture fitness functions, accessibility checks, and spec-to-implementation drift.
+- CI gates: linting and static analysis, architecture fitness functions, accessibility checks, spec-to-implementation drift, and performance benchmarks compared against a stored baseline.
 - Automated-change verification: runnable pass-or-fail criteria wired into agent-assisted work.
 
 ## What it does not cover
@@ -27,6 +27,6 @@ This category covers how a codebase proves its behavior before and after merge: 
 - A signup, login, or reset suite that only asserts success, so a lockout that never fires or a verification link that works twice stays green.
 - A security test retried or skipped to silence an intermittent failure, leaving a race condition unverified.
 - A golden expectation regenerated from the code under test, so the test can never catch that code being wrong.
-- A linter or SAST finding logged as a warning rather than failing the pipeline.
+- A linter or SAST finding logged as a warning rather than failing the pipeline, or a benchmark suite whose numbers nothing compares to a baseline.
 - A fixed access-control bug merged without a regression test that reproduces the exploit.
 - A coverage target met by excluding the auth module from measurement.
