@@ -152,6 +152,20 @@ substituted with an equivalent from the same class.
 | ProjectDiscovery suite (httpx, nuclei, naabu) | Recon + scan | Live hosts, ports, templates |
 | CloudBrute | Cloud bucket hunting | Exposed storage/buckets |
 
+## Cost & capacity
+
+| Tool | Class | What it checks |
+|---|---|---|
+| AWS Cost Allocation Tags | Spend attribution | Which tag keys are activated as billing dimensions |
+| GCP labels + billing export | Spend attribution | Label keys on resources, per-label cost in BigQuery export |
+| Azure tags + Cost Management | Spend attribution | Tag inheritance, cost by tag or resource group |
+| Infracost | IaC cost diff | Monthly cost delta on a pull request before merge |
+| metrics-server / `kubectl top` | Utilisation | Live CPU and memory use per pod and node |
+| Vertical Pod Autoscaler | Right-sizing | Recommended requests from observed history |
+| Goldilocks | Right-sizing | VPA recommendations across every namespace in a cluster |
+| KEDA ScaledObject | Idle reclamation | Scale to zero on a queue or request signal |
+| Karpenter consolidation | Idle reclamation | Whether under-used nodes are removed automatically |
+
 ## Usage notes for reviewers
 
 - Prefer running 2–3 complementary classes (SAST + secret + dep) over one
