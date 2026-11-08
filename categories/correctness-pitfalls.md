@@ -11,7 +11,7 @@ This category covers the classes of bug that have nothing to do with an attacker
 - Text and encoding: character encoding, code-point versus byte length, and truncation assumptions.
 - Time and scheduling: time-zone handling and daylight-saving transitions.
 - Concurrency, async and resource lifetime: shared mutable state, blocking a shared event loop, unhandled async errors, check-then-use races when publishing temporary files, cancellation that never reaches in-flight work, and handles, locks, timers and subscriptions released on every exit path.
-- Complexity, boundaries and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, import cycles and reads of another module's internals, function length and nesting budgets enforced against a measured baseline, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
+- Complexity, boundaries and control flow: cost on unbounded input, repeated computation on invariant inputs, keyed lookup instead of repeated scans, bounded directory traversal, bounded result materialization, boundary checks that live in the consuming component rather than the producer, import cycles and reads of another module's internals, configuration read from the ambient environment instead of injected at one boundary, function length and nesting budgets enforced against a measured baseline, edge cases, schema validation, structured exceptions, dead code, and merge hygiene.
 
 ## What it does not cover
 
