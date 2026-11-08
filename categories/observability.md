@@ -9,7 +9,7 @@ This category covers the telemetry a system emits and the detection built on it:
 - Logging: structure, levels, rotation, injection, and PII or secret redaction.
 - Metrics: cardinality, latency percentiles, queue depth, and saturation forecasts.
 - Tracing and profiling: context propagation, correlation IDs, flame graphs, and continuous profiling.
-- Alerting: routing, fatigue, dead-man's-switch heartbeats, and job-age objectives.
+- Alerting: routing, fatigue, dead-man's-switch heartbeats, job-age objectives, maintenance backlog against write rate, and headroom tiers below a hard stop.
 - Security detection: audit trails, object-level access logs, control-plane activity, and behavioral anomalies.
 - Pipeline integrity: backpressure and drop rate, plus unified SARIF ingest.
 
@@ -24,5 +24,5 @@ This category covers the telemetry a system emits and the detection built on it:
 - A log line records a token, password, session id, or PII field before redaction runs.
 - A metric is labeled with user id, email, session token, or raw URL, so cardinality grows without bound.
 - An audit-relevant event is collected but never reviewed or alerted, or is written to mutable storage.
-- A scheduled job that stops running produces no alert because only failures are monitored, not absence.
+- A scheduled job that stops running produces no alert because only failures are monitored, not absence — or it keeps succeeding while its backlog grows, the same blind spot one level down.
 - A p99 regression or queue backlog is invisible because dashboards track averages and counts.
