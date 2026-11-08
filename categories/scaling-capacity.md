@@ -9,7 +9,7 @@ This category covers how a system behaves as load grows and where its hard limit
 - Forecasting: peak-load capacity planning and non-functional requirement traceability.
 - Scaling mechanics: horizontal versus vertical, autoscaling signals and ceilings, worker pools, and traffic-free workloads scaled to zero or scheduled off.
 - Startup and runtime cost: cold starts, garbage collection, and memory-leak detection.
-- Resource ceilings: OOM behavior, disk and inode growth, storage IOPS, and WAL retention.
+- Resource ceilings: OOM behavior, disk and inode growth, storage IOPS, WAL retention, and headroom on identifiers that stop writes at exhaustion.
 - Efficiency hazards: quadratic work on unbounded input and latency-versus-throughput tradeoffs.
 - Isolation and spend: per-tenant quotas, noisy-neighbor limits, metered token budgets, and spend attributed to the service that caused it.
 
@@ -21,7 +21,7 @@ This category covers how a system behaves as load grows and where its hard limit
 
 ## What a finding here looks like
 
-- Capacity is planned against average load, with no headroom for a known peak.
+- Capacity is planned against average load, with no headroom for a known peak, or a counter runs toward its width with no alarm before writes stop.
 - An autoscaler scales on a signal that is cheap to inflate and has no maximum replica ceiling, or a non-production namespace pays for replicas that serve no traffic overnight.
 - A long-running service has no heap-trend monitoring, so a slow leak ends in an OOM kill at peak.
 - A request path — or a nightly job over an application-owned table — nests loops over two collections whose size nothing bounds, so CPU scales with data volume, not traffic.

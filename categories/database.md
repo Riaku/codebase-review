@@ -10,7 +10,7 @@ This category covers the persistent data tier: how schemas are shaped and change
 - Query and index performance: EXPLAIN review, scans, N+1 access, pagination, full-text search.
 - Transactions and concurrency: isolation levels, locking, deadlocks, timeout settings.
 - Migrations and rollback, including online schema change and cutover for large tables.
-- Replication, read replicas, and lag monitoring.
+- Replication and maintenance: read replicas, replication lag, reclamation backlog, and headroom on identifiers that halt writes.
 - Backup, restore drills, point-in-time recovery, and durable acknowledgment.
 
 ## What it does not cover
