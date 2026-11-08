@@ -4,11 +4,11 @@ Release engineering: strategies, environments, versioning.
 
 ## What this category covers
 
-This category covers how code and configuration move from a reviewed commit to a running production system. Member items span rollout strategies, environment parity, artifact promotion, release hooks, migration cutover, and rollback. They also cover the infrastructure side of releasing — infrastructure as code, GitOps reconciliation, drift detection, policy gates, and where release secrets and state live. A reviewer should expect findings about whether what was tested is what runs, whether a bad release can be reversed, and whether an out-of-band change can bypass the release path entirely.
+This category covers how code and configuration move from a reviewed commit to a running production system. Member items span rollout strategies, environment parity, artifact promotion, release hooks, migration cutover, the toggle surface, and rollback. They also cover the infrastructure side of releasing — infrastructure as code, GitOps reconciliation, drift detection, policy gates, and where release secrets and state live. A reviewer should expect findings about whether what was tested is what runs, whether a bad release can be reversed, and whether an out-of-band change can bypass the release path entirely.
 
 - Rollout strategy: blue-green, canary gates, and traffic cutover.
 - Artifact promotion: build once, immutable digests, signed provenance, and version semantics.
-- Release mechanics: Helm hook order, startup dependency ordering, and one-off admin processes.
+- Release mechanics: Helm hook order, startup dependency ordering, one-off admin processes, and the registry that enumerates every toggle.
 - Change control: infrastructure as code under review, GitOps as the source of truth, and drift between live state and Git.
 - Reversibility: rehearsed rollbacks, backward-compatible migrations, and code/data rollback pairing.
 - Environment hygiene: staging parity, masked data, debug-mode exclusion, and plaintext-secret avoidance.
