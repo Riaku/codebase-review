@@ -7,7 +7,7 @@ Detectability of failures: what operators are blind to when logs, metrics, trace
 This category covers the telemetry a system emits and the detection built on it: what gets recorded, whether it can be trusted and joined, and whether anyone is paged when it matters. Member items span structured logging and redaction, metrics and cardinality, distributed tracing and correlation, profiling, error tracking, and the alerting rules and routing behind them. They also cover the security-detection layer — audit trails, control-plane and data-plane access logging, beaconing, credential access, lateral movement, and threat hunting — and the health of the pipeline itself. A reviewer should expect findings about events that are missing, mutable, unattributable, or buried in noise.
 
 - Logging: structure, levels, rotation, injection, and PII or secret redaction.
-- Metrics: cardinality, latency percentiles, queue depth, and saturation forecasts.
+- Metrics: cardinality, latency percentiles, queue depth, connection-pool saturation, and retry and breaker-state signals.
 - Tracing and profiling: context propagation, correlation IDs, flame graphs, and continuous profiling.
 - Alerting: routing, fatigue, dead-man's-switch heartbeats, job-age objectives, maintenance backlog against write rate, and headroom tiers below a hard stop.
 - Security detection: audit trails, object-level access logs, control-plane activity, and behavioral anomalies.
@@ -25,4 +25,4 @@ This category covers the telemetry a system emits and the detection built on it:
 - A metric is labeled with user id, email, session token, or raw URL, so cardinality grows without bound.
 - An audit-relevant event is collected but never reviewed or alerted, or is written to mutable storage.
 - A scheduled job that stops running produces no alert because only failures are monitored, not absence — or it keeps succeeding while its backlog grows, the same blind spot one level down.
-- A p99 regression or queue backlog is invisible because dashboards track averages and counts.
+- A p99 regression, a climbing retry ratio, a breaker stuck open, or a saturated pool is invisible because dashboards track averages, counts, and successes.
