@@ -6,7 +6,7 @@ Fault-tolerance patterns under dependency failure.
 
 This category covers how a running system behaves when a dependency is slow, failing, or returning errors. Member items span the request-path patterns that contain that failure — timeouts and deadline propagation, bounded retries with backoff and jitter, circuit breakers, bulkheads, backpressure, and load shedding — plus the recovery patterns that follow an outage, such as throttled backlog catch-up and bounded self-healing. They also cover idempotency for retried side effects, startup ordering against a recovering backend, and verification of emergency controls. A reviewer should expect findings about a failure that is amplified rather than contained: retries that multiply, timers that synchronize, or one slow dependency that consumes shared capacity.
 
-- Time control: timeout budgets, deadline propagation, and retry policy.
+- Time control: timeout budgets, deadline propagation, explicit per-call timeouts, and retry policy scoped to idempotent operations.
 - Failure containment: circuit breakers, bulkheads, and graceful degradation.
 - Overload behavior: backpressure, load shedding, and queue high-water marks.
 - Synchronization hazards: jitter, thundering herd, and retry storms across the call graph.
@@ -21,8 +21,8 @@ This category covers how a running system behaves when a dependency is slow, fai
 
 ## What a finding here looks like
 
-- A call site has no deadline, or a downstream hop resets the deadline instead of consuming the remaining budget.
-- Retries are unbounded, immediate, or stacked across layers, so one blip becomes a multiplicative load increase.
+- A call site has no deadline or no timeout at all, or a downstream hop resets the deadline instead of consuming the remaining budget.
+- Retries are unbounded, immediate, stacked across layers, or replay a non-idempotent write, so one blip becomes a multiplicative load increase and a duplicate side effect.
 - A single thread or connection pool serves every dependency, so one slow backend starves unrelated features.
 - A hot cache key expires and every waiter queries the backing store at once.
 - A post-outage backlog is replayed at full speed and knocks over the dependency that just recovered.
